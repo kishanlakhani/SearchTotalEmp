@@ -36,29 +36,30 @@ export class AppComponent {
     // return total;
   },"");
   
+
+  //drop down many name print and string interpolation in select tag
   selectOption = ()=>{
     // console.log(this.optionList)
     document.getElementById("nameList").innerHTML ="<option>--select--</optin>" + this.optionList;
   }
      
 
-  // console.log();
-      // console.log(emp.name.search(nameSearch))
+  // console.log(emp.name.search(nameSearch))
 
+
+  // for input search box and find value with empArr;   
   searchName(){
 
-    // console.log(this.nameList)
-    // console.log(this.optionList)
-    // console.log("click call")
     let nameSearch =(<HTMLInputElement>document.getElementById("nameSearch")).value.toLowerCase();
     if(nameSearch!=""){
       // let nameReg = /[]/ig;
-    let name = this.empArr.filter(emp=>{
+      let name = this.empArr.filter(emp=>{
       // console.log(emp.name.search(nameSearch))
       return emp.name.toLocaleLowerCase().search(nameSearch)!=-1?emp.name:'';
     })
     this.nameSearchArr = name;
     console.log(name)
+    this.showNameData = [];
     // console.log(nameSearch)
     // document.getElementById("nameSearch").value='';
     }
@@ -68,6 +69,8 @@ export class AppComponent {
     
   }
 
+
+  // on total salary button click sum all salary and show
   totalSalary(){
     let totalSalary = document.getElementById("totalSalary");
 
@@ -81,11 +84,13 @@ export class AppComponent {
     console.log(totalSalarySum);
   }
 
+  // for drop down select show data
   showData(){
     // console.log(document.getElementById("nameList").value)
     this.showName = (<HTMLInputElement>document.getElementById("nameList")).value;
     // console.log(this.showName)
     this.showNameData = this.empArr[this.showName];
+    this.nameSearchArr=[];
     // console.log(this.showNameData)
     // showNameData = this.empArr.find(emp=>emp.name===this.showName);
     // console.log(this.nameSearchArr)
