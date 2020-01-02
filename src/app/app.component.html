@@ -1,4 +1,3 @@
-
 <!-- search name and drop down box -->
 <input type="text" name="nameSearch" id="nameSearch">
 <button (click)="searchName()">Submit</button>
@@ -7,8 +6,10 @@
 </select>
 <br>
 
-<!-- for drop down many -->
-<div *ngIf="showNameData != '' ">
+
+
+<div *ngIf="dropDownShowData">  
+  <!-- <h1>hi</h1> -->
   <h1>Search match element</h1>
   <table style="width:100%">
     <tr>
@@ -17,21 +18,18 @@
       <th>Age</th>
       <th>Salary</th>
     </tr>
-
     <tr>
       <td>{{ showNameData.id }}</td>
       <td>{{ showNameData.name }}</td>
       <td>{{ showNameData.age }}</td>
       <td>{{ showNameData.salary }}</td>
-    </tr>  
-  </table>
+    </tr>
+    </table>
 
 </div>
 
-
-
 <!-- input search tabel -->
-<div *ngIf="nameSearchArr.length!=0    " >
+<div *ngIf="nameSearchArr.length>0" >
   <h1>Search match element</h1>
   <table style="width:100%">
     <tr>
@@ -41,12 +39,6 @@
       <th>Salary</th>
     </tr>
 
-    <!-- <tr *ngFor="let name of showNameData">
-      <td>{{ name.name }}</td>
-      <td>{{ name.name }}</td>
-      <td>{{ name.age }}</td>
-      <td>{{ name.salary }}</td>
-    </tr>   -->
       <tr  *ngFor="let emp of nameSearchArr">
         <td>{{ emp.id }}</td>
         <td>{{ emp.name }}</td>
@@ -54,10 +46,14 @@
         <td>{{ emp.salary }}</td>
       </tr>
   </table>
-
 </div>
 
 <br>
+
+
+
+
+
 
 
 <!-- all empArr show in table form  -->
@@ -69,15 +65,12 @@
     <th>Salary</th>
   </tr>
   
-<!-- <div > -->
     <tr *ngFor="let emp of empArr">
       <td>{{ emp.id }}</td>
       <td>{{ emp.name }}</td>
       <td>{{ emp.age }}</td>
-      <!-- <td>{{ emp.salary }} <input type="text" name="salary" [id]="emp.id" [value]= "emp.salary" (input)="emp.salary = $event.target.value" id="salary"> </td> -->
       <td>{{ emp.salary }} <input type="number" name="salary" [id]="emp.id" [value]= "emp.salary" (input)="emp.salary = $event.target.value" id="salary"> </td>
     </tr>
-<!-- </div> -->
 </table>
 <div>
   <button (click)="totalSalary()">Total Salary</button>
